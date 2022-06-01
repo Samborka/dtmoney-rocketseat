@@ -5,7 +5,7 @@ import { App } from './App';
 
 createServer({
   models:{
-    transactions: Model
+    transaction: Model
   },
 
   seeds(server){
@@ -13,11 +13,11 @@ createServer({
       transactions: [
         {
           id: 1,
-          title: 'Salário',
-          type: 'deposit',
-          category: 'Dev',
-          amount: '2000',
-          createdAt: new Date('2021-01-01 09:00:00')
+          title: 'Supermercado',
+          type: 'withdraw',
+          category: 'Compras',
+          amount: 350,
+          createdAt: new Date('2021-01-01 13:58:00')
         },
 
         {
@@ -25,7 +25,7 @@ createServer({
           title: 'Salário',
           type: 'deposit',
           category: 'Dev',
-          amount: '2000',
+          amount: 2000,
           createdAt: new Date('2021-01-01 09:00:00')
         }
 
@@ -38,13 +38,13 @@ createServer({
     this.namespace = 'api';
 
     this.get('/transactions', () =>{
-      return this.schema.all('transactions');
+      return this.schema.all('transaction');
     })
   
     this.post('/transactions', (schema, request)=> {
       const data = JSON.parse(request.requestBody);
 
-      return schema.create('transactions', data);
+      return schema.create('transaction', data);
     })
   }
 })
